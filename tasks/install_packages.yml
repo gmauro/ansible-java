@@ -1,0 +1,11 @@
+- name: Accept Java 8 License
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+  when: java8
+
+- name: Install Oracle Java 8
+  apt: name={{ item }} state={{ packages_state }} update_cache=yes
+  with_items:
+    - oracle-java8-installer
+    - ca-certificates
+    - oracle-java8-set-default
+  when: java8

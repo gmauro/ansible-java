@@ -1,0 +1,5 @@
+- name: Import the repository key
+  apt_key: id=EEA14886 keyserver='keyserver.ubuntu.com' state=present
+
+- name: Create the repo source file
+  apt_repository: repo='deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ distribution_codename }} main' state=present filename='webupd8team-java'

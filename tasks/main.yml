@@ -1,0 +1,25 @@
+# see https://www.debian.org/releases/ or http://releases.ubuntu.com/
+
+- include: add_apt_repo.yml
+  vars:
+    distribution_codename: xenial
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_version >= 8
+
+- include: add_apt_repo.yml
+  vars:
+    distribution_codename: trusty
+  when:
+    - ansible_distribution == 'Ubuntu'
+    - ansible_distribution_version == "14.04"
+
+- include: add_apt_repo.yml
+  vars:
+    distribution_codename: xenial
+  when:
+    - ansible_distribution == 'Ubuntu'
+    - ansible_distribution_version == "16.04"
+
+- include: install_packages.yml
+  when: install_packages
