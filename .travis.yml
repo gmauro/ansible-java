@@ -5,7 +5,7 @@ services:
  - docker
 
 env:
-  - FILENAME=Dockerfile.ubuntu
+  - FILENAME=Dockerfile.ubuntu18.04
   - FILENAME=Dockerfile.debian
 
 script:
